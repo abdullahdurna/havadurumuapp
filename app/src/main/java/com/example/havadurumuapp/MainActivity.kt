@@ -21,13 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.weatherData.observe(this, Observer { weatherResponse ->
             if(weatherResponse != null) {
-                val displayText = "Ana Durum: ${weatherResponse.main}\nAçıklama: ${weatherResponse.description}"
+                val displayText = "Ana Durum: ${weatherResponse.weather[0].main}\nAçıklama: ${weatherResponse.weather[0].description}"
                 textView.text = displayText
             } else {
                 textView.text = "Hava durumu bilgisi alınamadı."
             }
         })
 
-        viewModel.fetchWeatherByCity("Istanbul", "YOUR_API_KEY") // "YOUR_API_KEY" kısmını OpenWeatherMap'ten aldığınız anahtarla değiştirin.
+
+        viewModel.fetchWeatherByCity("Istanbul", "ddac07ad41c19dce7a68c9e803d8665c") // "YOUR_API_KEY" kısmını OpenWeatherMap'ten aldığınız anahtarla değiştirin.
     }
 }
